@@ -21,4 +21,12 @@ public class DocumentoController {
     @PostMapping
     public DocumentoResponseDTO salvar(@RequestBody DocumentoDTO dto){ return service.salvar(dto);}
 
+    @PutMapping("/{id}")
+    public DocumentoResponseDTO atualizar(@PathVariable Long id, @RequestBody DocumentoDTO dto){return service.atualizar(id,dto);}
+
+    @PutMapping("/{id}/mover")
+    public void mover(@PathVariable Long id, @RequestParam Long setorId, @RequestParam Long funcionarioId){
+        service.moverDocumento(id, setorId, funcionarioId);
+    }
+
 }

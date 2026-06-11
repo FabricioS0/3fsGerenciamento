@@ -1,5 +1,6 @@
 package com.tresfs.gerenciamento.service;
 
+import com.tresfs.gerenciamento.dto.HistoricoResponseDTO;
 import com.tresfs.gerenciamento.entity.Documento;
 import com.tresfs.gerenciamento.entity.Funcionario;
 import com.tresfs.gerenciamento.entity.Historico;
@@ -7,6 +8,8 @@ import com.tresfs.gerenciamento.entity.StatusAcao;
 import com.tresfs.gerenciamento.repository.HistoricoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class HistoricoService {
@@ -21,5 +24,13 @@ public class HistoricoService {
         historico.setAcao(acao);
 
         historicoRepository.save(historico);
+    }
+
+
+    public List<HistoricoResponseDTO> listarPorDocumento(Long documentoId) {
+        return historicoRepository.findByDocumentoId(documentoId)
+                .stream()
+                .map(HistoricoResponseDTO::new)
+                .toList();
     }
 }
