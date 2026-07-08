@@ -34,11 +34,13 @@ public class Documento {
     private LocalDateTime dataCadastro;
 
     @ManyToOne
-    @JoinColumn(name = "setor_id", nullable = false)
+    @JoinColumn(name = "setor_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_documento_setor"))
     private Setor setor;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_cadastro_id", nullable = false)
+    @JoinColumn(name = "usuario_cadastro_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_documento_usuario"))
     private Funcionario usuarioCadastro;
     @PrePersist
     public void prePersist(){

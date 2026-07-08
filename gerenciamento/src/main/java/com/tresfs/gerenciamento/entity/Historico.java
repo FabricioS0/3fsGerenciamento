@@ -31,11 +31,13 @@ public class Historico {
     }
 
     @ManyToOne
-    @JoinColumn(name = "documento_id", nullable = false)
+    @JoinColumn(name = "documento_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_historico_documento"))
     private Documento documento;
 
     @ManyToOne
-    @JoinColumn(name = "funcionario_id", nullable = false)
+    @JoinColumn(name = "funcionario_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_historico_funcionario"))
     private Funcionario funcionario;
 
 

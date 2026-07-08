@@ -22,7 +22,8 @@ public class Funcionario {
     private TipoUsuario tipoUsuario;
     private LocalDateTime dataCriacao;
     @ManyToOne
-    @JoinColumn(name = "setor_id", nullable = false)
+    @JoinColumn(name = "setor_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_funcionario_setor"))
     private Setor setor;
     @PrePersist
     public void prePersist(){
