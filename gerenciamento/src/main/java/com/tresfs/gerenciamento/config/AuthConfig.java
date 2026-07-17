@@ -18,4 +18,6 @@ public class AuthConfig implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return (UserDetails) funcionarioRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException(username));
     }
+
+
 }
